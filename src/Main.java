@@ -50,6 +50,42 @@ public class Main {
         return sortedEmployees;
     }
 
+    public static ArrayList<Employee> reFactorSort(ArrayList<Employee> employees) {
+        ArrayList<Employee> sortedEmployees = new ArrayList<>(employees);
+        long startTime = System.currentTimeMillis();
+        reFactorSortHelper(sortedEmployees, 0, sortedEmployees.size() - 1);
+        long endTime = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println("Sorted array by quick sort");
+        System.out.println("Time taken to sort:" + totalTime + " milliseconds");
+        return sortedEmployees;
+    }
+
+    private static void reFactorSortHelper(ArrayList<Employee> employees, int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(employees, low, high);
+            reFactorSortHelper(employees, low, partitionIndex - 1);
+            reFactorSortHelper(employees, partitionIndex + 1, high);
+        }
+    }
+
+    private static int partition(ArrayList<Employee> employees, int low, int high) {
+        Employee pivot = employees.get(high);
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (employees.get(j).getSalary() < pivot.getSalary()) {
+                i++;
+                Employee temp = employees.get(i);
+                employees.set(i, employees.get(j));
+                employees.set(j, temp);
+            }
+        }
+        Employee temp = employees.get(i + 1);
+        employees.set(i + 1, employees.get(high));
+        employees.set(high, temp);
+        return i + 1;
+    }
+
     public static void printEmployees(ArrayList<Employee> employees) {
         for (Employee employee: employees) {
             System.out.println(employee);
@@ -58,7 +94,8 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Employee> employees = employeesCreator(10000);
-        ArrayList<Employee> sortedArray = bubbleSort(employees);
-        printEmployees(sortedArray);
+        //ArrayList<Employee> sortedEmployees = bubbleSort(employees);
+        ArrayList<Employee> sortedEmployees = reFactorSort(employees);
+        printEmployees(sortedEmployees);
     }
 }

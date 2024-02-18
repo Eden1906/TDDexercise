@@ -25,13 +25,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return
                 "NAME: " + first_name + ' ' + last_name + ", "
                 + "ADDRESS: " + address +
                 ", AGE: " + age +
                 ", ID: " + id_number + ", " +
-                "PHONE NUMBER: " + "05" + phone_number +
-                ", SALARY: " + salary +
-                '}';
+                "PHONE: " + "05" + phone_number +
+                ", SALARY: " + salary
+                ;
     }
 }
