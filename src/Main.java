@@ -27,6 +27,7 @@ public class Main {
         return employees;
     }
 
+    /*
     public static ArrayList<Employee> bubbleSort(ArrayList<Employee> employees) {
         ArrayList<Employee> sortedEmployees = new ArrayList<>(employees);
         long startTime = System.currentTimeMillis();
@@ -49,6 +50,7 @@ public class Main {
         System.out.println("Time taken to sort: " + totalSortTime + " milliseconds");
         return sortedEmployees;
     }
+     */
 
     public static ArrayList<Employee> reFactorSort(ArrayList<Employee> employees) {
         ArrayList<Employee> sortedEmployees = new ArrayList<>(employees);
